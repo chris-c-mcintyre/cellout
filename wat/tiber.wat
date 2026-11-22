@@ -8,6 +8,131 @@
 
   ;; module functions
 
+  (func $dim_duo_inp_tet_box
+
+    ;; inputs
+    (param $point i32)
+    (param $row_num i32)
+    (param $row_siz i32)
+    (param $i_mod i32)
+    (param $x_mod i32)
+    (param $y_mod i32)
+    (param $i i32)
+
+    ;; variables
+
+    (local $m_mod i32)
+    (local $stops i32)
+
+    ;; function
+
+    (local.set $m_mod (i32.xor (local.get $i_mod) (local.get $x_mod)))
+    (local.set $stops (i32.add (local.get $point) (local.get $row_siz)))
+
+    (local.get $i_mod)
+    (if
+      (then
+
+        ;; cut lef col
+        (local.set $point (i32.add (local.get $point) (i32.const 4)))
+
+        ;; cut top row
+        (local.set $point (i32.add (local.get $point) (local.get $row_siz)))
+        (local.set $stops (i32.add (local.get $stops) (local.get $row_siz)))
+        (local.set $row_num (i32.sub (local.get $row_num) (i32.const 1)))
+
+        (local.get $x_mod)
+        (if
+          (then
+            nop
+          )
+          (else
+            ;; cut rig col
+            (local.set $stops (i32.sub (local.get $stops) (i32.const 4)))
+          )
+        )
+
+        (local.get $y_mod)
+        (if
+          (then
+            nop
+          )
+          (else
+            ;; cut bot row
+            (local.set $row_num (i32.sub (local.get $row_num) (i32.const 1)))
+          )
+        )
+      )
+      (else
+
+        (local.get $x_mod)
+        (if
+          (then
+            ;; cut rig col
+            (local.set $stops (i32.sub (local.get $stops) (i32.const 4)))
+          )
+          (else
+            nop
+          )
+        )
+
+        (local.get $y_mod)
+        (if
+          (then
+            ;; cut bot row
+            (local.set $row_num (i32.sub (local.get $row_num) (i32.const 1)))
+          )
+          (else
+            nop
+          )
+        )
+
+      )
+    )
+
+    ;; y_loop opens
+    (loop $y_loop
+
+      ;; x_loop opens
+      (loop $x_loop
+
+        (call $tet_box
+          (local.get $point)
+          (i32.add (local.get $point) (i32.const 4))
+          (i32.add (local.get $point) (local.get $row_siz))
+          (i32.add (i32.add (local.get $point) (local.get $row_siz)) (i32.const 4))
+          (local.get $i)
+        )
+
+        ;; x_loop close
+
+        (i32.lt_u
+          (local.tee $point (i32.add (local.get $point) (i32.const 8)))
+          (local.get $stops)
+        )
+        (br_if $x_loop)
+      )
+
+      ;; nex box row
+      (local.set $point (i32.add (local.get $point) (local.get $row_siz)))
+      (local.set $stops (i32.add (local.get $stops) (i32.mul (local.get $row_siz) (i32.const 2))))
+
+      ;; cut lef col
+      (local.set $point (i32.add (local.get $point) (i32.mul (i32.const 4) (local.get $i_mod))))
+
+      ;; cut rig col
+      (local.set $point (i32.add (local.get $point) (i32.mul (i32.const 4) (local.get $m_mod))))
+
+      ;; y_loop close
+
+      (i32.gt_u
+        (local.tee $row_num (i32.sub (local.get $row_num) (i32.const 2)))
+        (i32.const 0)
+      )
+      (br_if $y_loop)
+    )
+  )
+
   (func $dim_tri_inp_tet_box
 
     ;; inputs
