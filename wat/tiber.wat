@@ -116,6 +116,28 @@
     (local $dow_lef_out i32)
     (local $dow_rig_out i32)
 
+    ;; variables : color
+
+    (local $upp_lef_red i32)
+    (local $upp_lef_gre i32)
+    (local $upp_lef_blu i32)
+    (local $upp_lef_alp i32)
+
+    (local $upp_rig_red i32)
+    (local $upp_rig_gre i32)
+    (local $upp_rig_blu i32)
+    (local $upp_rig_alp i32)
+
+    (local $dow_lef_red i32)
+    (local $dow_lef_gre i32)
+    (local $dow_lef_blu i32)
+    (local $dow_lef_alp i32)
+
+    (local $dow_rig_red i32)
+    (local $dow_rig_gre i32)
+    (local $dow_rig_blu i32)
+    (local $dow_rig_alp i32)
+
     ;; function
 
     ;; function : loads
@@ -124,6 +146,54 @@
     (local.set $upp_rig_val (i32.load (local.get $upp_rig_loc)))
     (local.set $dow_lef_val (i32.load (local.get $dow_lef_loc)))
     (local.set $dow_rig_val (i32.load (local.get $dow_rig_loc)))
+
+    ;; function : color : extract
+
+    (local.set $upp_lef_red (call $mask_val_red (local.get $upp_lef_val)))
+    (local.set $upp_lef_gre (call $mask_val_gre (local.get $upp_lef_val)))
+    (local.set $upp_lef_blu (call $mask_val_blu (local.get $upp_lef_val)))
+    (local.set $upp_lef_alp (call $mask_val_alp (local.get $upp_lef_val)))
+
+    (local.set $upp_rig_red (call $mask_val_red (local.get $upp_rig_val)))
+    (local.set $upp_rig_gre (call $mask_val_gre (local.get $upp_rig_val)))
+    (local.set $upp_rig_blu (call $mask_val_blu (local.get $upp_rig_val)))
+    (local.set $upp_rig_alp (call $mask_val_alp (local.get $upp_rig_val)))
+
+    (local.set $dow_lef_red (call $mask_val_red (local.get $dow_lef_val)))
+    (local.set $dow_lef_gre (call $mask_val_gre (local.get $dow_lef_val)))
+    (local.set $dow_lef_blu (call $mask_val_blu (local.get $dow_lef_val)))
+    (local.set $dow_lef_alp (call $mask_val_alp (local.get $dow_lef_val)))
+
+    (local.set $dow_rig_red (call $mask_val_red (local.get $dow_rig_val)))
+    (local.set $dow_rig_gre (call $mask_val_gre (local.get $dow_rig_val)))
+    (local.set $dow_rig_blu (call $mask_val_blu (local.get $dow_rig_val)))
+    (local.set $dow_rig_alp (call $mask_val_alp (local.get $dow_rig_val)))
+
+    ;; function : color : combine
+
+    (local.set $upp_lef_out
+      (call $mask_rgba
+        (local.get $upp_lef_red) (local.get $upp_lef_gre) (local.get $upp_lef_blu) (local.get $upp_lef_alp)
+      )
+    )
+
+    (local.set $upp_rig_out
+      (call $mask_rgba
+        (local.get $upp_rig_red) (local.get $upp_rig_gre) (local.get $upp_rig_blu) (local.get $upp_rig_alp)
+      )
+    )
+
+    (local.set $dow_lef_out
+      (call $mask_rgba
+        (local.get $dow_lef_red) (local.get $dow_lef_gre) (local.get $dow_lef_blu) (local.get $dow_lef_alp)
+      )
+    )
+
+    (local.set $dow_rig_out
+      (call $mask_rgba
+        (local.get $dow_rig_red) (local.get $dow_rig_gre) (local.get $dow_rig_blu) (local.get $dow_rig_alp)
+      )
+    )
 
     ;; function : stores
 
