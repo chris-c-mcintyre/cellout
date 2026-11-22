@@ -8,6 +8,52 @@
 
   ;; module functions
 
+  ;; combine 8-bit RGBA color channels into 32-bit integer
+  (func $mask_rgba
+
+    ;; inputs
+    (param $r i32)
+    (param $g i32)
+    (param $b i32)
+    (param $a i32)
+
+    ;; outputs
+    (result i32)
+
+    ;; variables
+
+    (local $c i32)
+
+    ;; function
+
+    (local.set $c
+      (i32.or
+        (i32.or
+          (i32.or
+            (i32.or
+              (i32.const 0x000000)
+              (local.get $r)
+            )
+            (i32.shl
+              (local.get $g)
+              (i32.const 8)
+            )
+          )
+          (i32.shl
+            (local.get $b)
+            (i32.const 16)
+          )
+        )
+        (i32.shl
+          (local.get $a)
+          (i32.const 24)
+        )
+      )
+    )
+
+    (local.get $c)
+  )
+
   (func $tet_box
 
     ;; inputs
