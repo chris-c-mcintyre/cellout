@@ -8,6 +8,20 @@
 
   ;; module functions
 
+  (func $tet_box
+
+    ;; inputs
+    (param $upp_lef_loc i32)
+    (param $upp_rig_loc i32)
+    (param $dow_lef_loc i32)
+    (param $dow_rig_loc i32)
+    (param $i i32)
+
+    ;; variables
+
+    ;; function
+  )
+
   (func $dim_duo_inp_tet_box
 
     ;;  m_mod ==         ;;  m_mod ==
