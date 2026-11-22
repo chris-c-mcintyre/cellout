@@ -8,6 +8,47 @@
 
   ;; module functions
 
+  ;; red channel in 8 bits
+  (func $mask_val_red (param $index i32) (result i32)
+    (i32.and
+      (local.get $index)
+      (i32.const 0x000000ff)
+    )
+  )
+
+  ;; green channel in 8 bits
+  (func $mask_val_gre (param $index i32) (result i32)
+    (i32.shr_u
+      (i32.and
+        (local.get $index)
+        (i32.const 0x0000ff00)
+      )
+      (i32.const 8)
+    )
+  )
+
+  ;; blue channel in 8 bits
+  (func $mask_val_blu (param $index i32) (result i32)
+    (i32.shr_u
+      (i32.and
+        (local.get $index)
+        (i32.const 0x00ff0000)
+      )
+      (i32.const 16)
+    )
+  )
+
+  ;; alpha channel in 8 bits
+  (func $mask_val_alp (param $index i32) (result i32)
+    (i32.shr_u
+      (i32.and
+        (local.get $index)
+        (i32.const 0xff000000)
+      )
+      (i32.const 24)
+    )
+  )
+
   ;; combine 8-bit RGBA color channels into 32-bit integer
   (func $mask_rgba
 
