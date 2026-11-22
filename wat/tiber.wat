@@ -19,7 +19,31 @@
 
     ;; variables
 
+    (local $upp_lef_val i32)
+    (local $upp_rig_val i32)
+    (local $dow_lef_val i32)
+    (local $dow_rig_val i32)
+
+    (local $upp_lef_out i32)
+    (local $upp_rig_out i32)
+    (local $dow_lef_out i32)
+    (local $dow_rig_out i32)
+
     ;; function
+
+    ;; function : loads
+
+    (local.set $upp_lef_val (i32.load (local.get $upp_lef_loc)))
+    (local.set $upp_rig_val (i32.load (local.get $upp_rig_loc)))
+    (local.set $dow_lef_val (i32.load (local.get $dow_lef_loc)))
+    (local.set $dow_rig_val (i32.load (local.get $dow_rig_loc)))
+
+    ;; function : stores
+
+    (i32.store (local.get $upp_lef_loc) (local.get $upp_lef_out))
+    (i32.store (local.get $upp_rig_loc) (local.get $upp_rig_out))
+    (i32.store (local.get $dow_lef_loc) (local.get $dow_lef_out))
+    (i32.store (local.get $dow_rig_loc) (local.get $dow_rig_out))
   )
 
   (func $dim_duo_inp_tet_box
