@@ -156,6 +156,69 @@
     )
   )
 
+  (func $force_solve_pro_out
+
+    ;; inputs
+
+    (param $mid_out i32)
+    (param $mid_out_h i32)
+    (param $mid_out_v i32)
+
+    ;; outputs
+
+    (result i32 i32)
+
+    ;; variables
+
+    (local $mid_out_sum i32)
+
+    ;; function
+
+    (i32.ge_u
+      (local.get $mid_out)
+      (local.tee $mid_out_sum (i32.add (local.get $mid_out_h) (local.get $mid_out_v)))
+    )
+    (if (result i32 i32)
+
+      ;; corner gives out all requested particles to all adjacent cells in full
+      (then
+
+        (local.get $mid_out_h)
+        (local.get $mid_out_v)
+      )
+
+      ;; corner gives out partial particles to adjacent cells proportionate to appropriate forces
+      (else
+
+        (local.get $mid_out_sum)
+        (if (result i32 i32)
+          (then
+
+            (i32.div_u
+              (i32.mul
+                (local.get $mid_out)
+                (local.get $mid_out_h)
+              )
+              (local.get $mid_out_sum)
+            )
+            (i32.div_u
+              (i32.mul
+                (local.get $mid_out)
+                (local.get $mid_out_v)
+              )
+              (local.get $mid_out_sum)
+            )
+          )
+          (else
+
+            (i32.const 0)
+            (i32.const 0)
+          )
+        )
+      )
+    )
+  )
+
   (func $tense_solve_for_dim
 
     ;; inputs
