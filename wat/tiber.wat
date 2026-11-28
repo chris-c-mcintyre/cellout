@@ -219,6 +219,36 @@
     )
   )
 
+  (func $force_solve_sum_tot
+
+    ;; inputs
+
+    (param $mid_tot i32)
+    (param $mid_out_h i32)
+    (param $mid_out_v i32)
+    (param $mid_inc_h i32)
+    (param $mid_inc_v i32)
+
+    ;; outputs
+
+    (result i32)
+
+    ;; variables
+
+    (local $mid_out_sum i32)
+    (local $mid_inc_sum i32)
+
+    ;; function
+
+    (local.set $mid_out_sum (i32.add (local.get $mid_out_h) (local.get $mid_out_v)))
+    (local.set $mid_inc_sum (i32.add (local.get $mid_inc_h) (local.get $mid_inc_v)))
+
+    (local.set $mid_tot (i32.add (local.get $mid_tot) (local.get $mid_inc_sum)))
+    (local.set $mid_tot (i32.sub (local.get $mid_tot) (local.get $mid_out_sum)))
+
+    local.get $mid_tot
+  )
+
   (func $tense_solve_for_dim
 
     ;; inputs
