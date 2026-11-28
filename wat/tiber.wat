@@ -12,6 +12,68 @@
 
   ;; module functions
 
+  (func $tiber_grows
+
+    ;; inputs
+    (param $val_gre i32)
+
+    ;; outputs
+    (result i32)
+
+    ;; variables
+    (local $ran i32)
+    (local $gro i32)
+
+    ;; function
+
+    i32.const 191 ;; growth limiter; higher is slower
+    local.set $gro
+
+    local.get $val_gre
+    i32.const 255
+    i32.lt_u
+    (if (result i32)
+      (then
+        (local.set $ran
+          (call $rando_trixo)
+        )
+
+        i32.const 0x0000ff00
+        local.get $ran
+        i32.and
+        i32.const 8
+        i32.shr_u
+        local.get $gro
+        i32.ge_u
+        (if (result i32)
+          (then
+            local.get $val_gre
+            i32.const 0x000000ff
+            local.get $ran
+            i32.and
+            i32.gt_u
+            (if (result i32)
+              (then
+                local.get $val_gre
+                i32.const 1
+                i32.add
+              )
+              (else
+                local.get $val_gre
+              )
+            )
+          )
+          (else
+            local.get $val_gre
+          )
+        )
+      )
+      (else
+        i32.const 255
+      )
+    )
+  )
+
   ;; red channel in 8 bits
   (func $mask_val_red (param $index i32) (result i32)
     (i32.and
