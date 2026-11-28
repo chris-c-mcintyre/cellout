@@ -915,6 +915,36 @@
     (local.set $dow_rig_blu (call $mask_val_blu (local.get $dow_rig_val)))
     (local.set $dow_rig_alp (call $mask_val_alp (local.get $dow_rig_val)))
 
+    ;; function : tiber
+
+    ;; tiber_grows
+
+    (global.get $globo_force_flags_tiber_grows)
+    (if
+      (then
+
+        ;; upp_lef
+        local.get $upp_lef_gre
+        call $tiber_grows
+        local.set $upp_lef_gre
+
+        ;; upp_rig
+        local.get $upp_rig_gre
+        call $tiber_grows
+        local.set $upp_rig_gre
+
+        ;; dow_lef
+        local.get $dow_lef_gre
+        call $tiber_grows
+        local.set $dow_lef_gre
+
+        ;; dow_rig
+        local.get $dow_rig_gre
+        call $tiber_grows
+        local.set $dow_rig_gre
+      )
+    )
+
     ;; function : force : solve
 
     ;; alp
