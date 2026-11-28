@@ -78,6 +78,116 @@
     )
   )
 
+  (func $tiber_spore
+
+    ;; inputs
+    (param $val_gre i32)
+
+    ;; outputs
+    (result i32 i32)
+
+    ;; variables
+    (local $pus_tow_x_gre i32)
+    (local $pus_tow_y_gre i32)
+    (local $ran i32)
+    (local $mid i32)
+
+    ;; function
+
+    (local.set $ran
+      (call $rando_trixo)
+    )
+
+    local.get $val_gre
+    i32.popcnt
+    i32.const 1
+    i32.ne
+    (if
+      (then
+
+        i32.const 0x00ff0000
+        local.get $ran
+        i32.and
+        i32.const 16
+        i32.shr_u
+        i32.const 1
+        i32.and
+        (if
+          (then
+
+            i32.const 0x000000ff
+            local.get $ran
+            i32.and
+            local.set $mid
+
+            local.get $val_gre
+            local.get $mid
+            i32.gt_u
+            (if
+              (then
+
+                local.get $mid
+                i32.const 4
+                i32.div_u
+                local.set $pus_tow_x_gre
+
+              )
+              (else
+
+                i32.const 0
+                local.set $pus_tow_x_gre
+
+              )
+            )
+
+          )
+          (else
+
+            i32.const 0x0000ff00
+            local.get $ran
+            i32.and
+            i32.const 8
+            i32.shr_u
+            local.set $mid
+
+            local.get $val_gre
+            local.get $mid
+            i32.gt_u
+            (if
+              (then
+
+                local.get $mid
+                i32.const 4
+                i32.div_u
+                local.set $pus_tow_y_gre
+
+              )
+              (else
+
+                i32.const 0
+                local.set $pus_tow_y_gre
+
+              )
+            )
+
+          )
+        )
+      )
+      (else
+
+        i32.const 0
+        local.set $pus_tow_x_gre
+
+        i32.const 0
+        local.set $pus_tow_y_gre
+
+      )
+    )
+
+    (local.get $pus_tow_x_gre)
+    (local.get $pus_tow_y_gre)
+  )
+
   ;; red channel in 8 bits
   (func $mask_val_red (param $index i32) (result i32)
     (i32.and
