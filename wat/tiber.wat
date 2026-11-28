@@ -138,6 +138,168 @@
     (local $dow_rig_blu i32)
     (local $dow_rig_alp i32)
 
+    ;; variables : force
+
+    (local $upp_lef_red_pul_tow_x i32)
+    (local $upp_lef_red_pus_awa_x i32)
+    (local $upp_lef_red_res_pul_x i32)
+    (local $upp_lef_red_res_pus_x i32)
+
+    (local $upp_lef_red_pul_tow_y i32)
+    (local $upp_lef_red_pus_awa_y i32)
+    (local $upp_lef_red_res_pul_y i32)
+    (local $upp_lef_red_res_pus_y i32)
+
+    (local $upp_rig_red_pul_tow_x i32)
+    (local $upp_rig_red_pus_awa_x i32)
+    (local $upp_rig_red_res_pul_x i32)
+    (local $upp_rig_red_res_pus_x i32)
+
+    (local $upp_rig_red_pul_tow_y i32)
+    (local $upp_rig_red_pus_awa_y i32)
+    (local $upp_rig_red_res_pul_y i32)
+    (local $upp_rig_red_res_pus_y i32)
+
+    (local $dow_lef_red_pul_tow_x i32)
+    (local $dow_lef_red_pus_awa_x i32)
+    (local $dow_lef_red_res_pul_x i32)
+    (local $dow_lef_red_res_pus_x i32)
+
+    (local $dow_lef_red_pul_tow_y i32)
+    (local $dow_lef_red_pus_awa_y i32)
+    (local $dow_lef_red_res_pul_y i32)
+    (local $dow_lef_red_res_pus_y i32)
+
+    (local $dow_rig_red_pul_tow_x i32)
+    (local $dow_rig_red_pus_awa_x i32)
+    (local $dow_rig_red_res_pul_x i32)
+    (local $dow_rig_red_res_pus_x i32)
+
+    (local $dow_rig_red_pul_tow_y i32)
+    (local $dow_rig_red_pus_awa_y i32)
+    (local $dow_rig_red_res_pul_y i32)
+    (local $dow_rig_red_res_pus_y i32)
+
+    (local $upp_lef_gre_pul_tow_x i32)
+    (local $upp_lef_gre_pus_awa_x i32)
+    (local $upp_lef_gre_res_pul_x i32)
+    (local $upp_lef_gre_res_pus_x i32)
+
+    (local $upp_lef_gre_pul_tow_y i32)
+    (local $upp_lef_gre_pus_awa_y i32)
+    (local $upp_lef_gre_res_pul_y i32)
+    (local $upp_lef_gre_res_pus_y i32)
+
+    (local $upp_rig_gre_pul_tow_x i32)
+    (local $upp_rig_gre_pus_awa_x i32)
+    (local $upp_rig_gre_res_pul_x i32)
+    (local $upp_rig_gre_res_pus_x i32)
+
+    (local $upp_rig_gre_pul_tow_y i32)
+    (local $upp_rig_gre_pus_awa_y i32)
+    (local $upp_rig_gre_res_pul_y i32)
+    (local $upp_rig_gre_res_pus_y i32)
+
+    (local $dow_lef_gre_pul_tow_x i32)
+    (local $dow_lef_gre_pus_awa_x i32)
+    (local $dow_lef_gre_res_pul_x i32)
+    (local $dow_lef_gre_res_pus_x i32)
+
+    (local $dow_lef_gre_pul_tow_y i32)
+    (local $dow_lef_gre_pus_awa_y i32)
+    (local $dow_lef_gre_res_pul_y i32)
+    (local $dow_lef_gre_res_pus_y i32)
+
+    (local $dow_rig_gre_pul_tow_x i32)
+    (local $dow_rig_gre_pus_awa_x i32)
+    (local $dow_rig_gre_res_pul_x i32)
+    (local $dow_rig_gre_res_pus_x i32)
+
+    (local $dow_rig_gre_pul_tow_y i32)
+    (local $dow_rig_gre_pus_awa_y i32)
+    (local $dow_rig_gre_res_pul_y i32)
+    (local $dow_rig_gre_res_pus_y i32)
+
+    (local $upp_lef_blu_pul_tow_x i32)
+    (local $upp_lef_blu_pus_awa_x i32)
+    (local $upp_lef_blu_res_pul_x i32)
+    (local $upp_lef_blu_res_pus_x i32)
+
+    (local $upp_lef_blu_pul_tow_y i32)
+    (local $upp_lef_blu_pus_awa_y i32)
+    (local $upp_lef_blu_res_pul_y i32)
+    (local $upp_lef_blu_res_pus_y i32)
+
+    (local $upp_rig_blu_pul_tow_x i32)
+    (local $upp_rig_blu_pus_awa_x i32)
+    (local $upp_rig_blu_res_pul_x i32)
+    (local $upp_rig_blu_res_pus_x i32)
+
+    (local $upp_rig_blu_pul_tow_y i32)
+    (local $upp_rig_blu_pus_awa_y i32)
+    (local $upp_rig_blu_res_pul_y i32)
+    (local $upp_rig_blu_res_pus_y i32)
+
+    (local $dow_lef_blu_pul_tow_x i32)
+    (local $dow_lef_blu_pus_awa_x i32)
+    (local $dow_lef_blu_res_pul_x i32)
+    (local $dow_lef_blu_res_pus_x i32)
+
+    (local $dow_lef_blu_pul_tow_y i32)
+    (local $dow_lef_blu_pus_awa_y i32)
+    (local $dow_lef_blu_res_pul_y i32)
+    (local $dow_lef_blu_res_pus_y i32)
+
+    (local $dow_rig_blu_pul_tow_x i32)
+    (local $dow_rig_blu_pus_awa_x i32)
+    (local $dow_rig_blu_res_pul_x i32)
+    (local $dow_rig_blu_res_pus_x i32)
+
+    (local $dow_rig_blu_pul_tow_y i32)
+    (local $dow_rig_blu_pus_awa_y i32)
+    (local $dow_rig_blu_res_pul_y i32)
+    (local $dow_rig_blu_res_pus_y i32)
+
+    (local $upp_lef_alp_pul_tow_x i32)
+    (local $upp_lef_alp_pus_awa_x i32)
+    (local $upp_lef_alp_res_pul_x i32)
+    (local $upp_lef_alp_res_pus_x i32)
+
+    (local $upp_lef_alp_pul_tow_y i32)
+    (local $upp_lef_alp_pus_awa_y i32)
+    (local $upp_lef_alp_res_pul_y i32)
+    (local $upp_lef_alp_res_pus_y i32)
+
+    (local $upp_rig_alp_pul_tow_x i32)
+    (local $upp_rig_alp_pus_awa_x i32)
+    (local $upp_rig_alp_res_pul_x i32)
+    (local $upp_rig_alp_res_pus_x i32)
+
+    (local $upp_rig_alp_pul_tow_y i32)
+    (local $upp_rig_alp_pus_awa_y i32)
+    (local $upp_rig_alp_res_pul_y i32)
+    (local $upp_rig_alp_res_pus_y i32)
+
+    (local $dow_lef_alp_pul_tow_x i32)
+    (local $dow_lef_alp_pus_awa_x i32)
+    (local $dow_lef_alp_res_pul_x i32)
+    (local $dow_lef_alp_res_pus_x i32)
+
+    (local $dow_lef_alp_pul_tow_y i32)
+    (local $dow_lef_alp_pus_awa_y i32)
+    (local $dow_lef_alp_res_pul_y i32)
+    (local $dow_lef_alp_res_pus_y i32)
+
+    (local $dow_rig_alp_pul_tow_x i32)
+    (local $dow_rig_alp_pus_awa_x i32)
+    (local $dow_rig_alp_res_pul_x i32)
+    (local $dow_rig_alp_res_pus_x i32)
+
+    (local $dow_rig_alp_pul_tow_y i32)
+    (local $dow_rig_alp_pus_awa_y i32)
+    (local $dow_rig_alp_res_pul_y i32)
+    (local $dow_rig_alp_res_pus_y i32)
+
     ;; function
 
     ;; function : loads
