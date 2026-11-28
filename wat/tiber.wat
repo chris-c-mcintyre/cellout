@@ -8,6 +8,10 @@
   (func (export "globo_get_force_flags_tiber_grows") (result i32) (global.get $globo_force_flags_tiber_grows))
   (func (export "globo_set_force_flags_tiber_grows") (param i32) (global.set $globo_force_flags_tiber_grows (local.get 0)))
 
+  (global $globo_force_flags_tiber_spore (mut i32) (i32.const 1))
+  (func (export "globo_get_force_flags_tiber_spore") (result i32) (global.get $globo_force_flags_tiber_spore))
+  (func (export "globo_set_force_flags_tiber_spore") (param i32) (global.set $globo_force_flags_tiber_spore (local.get 0)))
+
   ;; module global variables
 
   ;; module functions
