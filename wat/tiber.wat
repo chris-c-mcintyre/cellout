@@ -95,6 +95,264 @@
     (local.get $c)
   )
 
+  (func $tense_solve
+
+    ;; inputs
+
+    (param $cha_max i32)
+
+    (param $ulc_pul_tow_x i32)
+    (param $ulc_res_pul_x i32)
+    (param $ulc_pus_awa_x i32)
+    (param $ulc_res_pus_x i32)
+    (param $ulc_pul_tow_y i32)
+    (param $ulc_res_pul_y i32)
+    (param $ulc_pus_awa_y i32)
+    (param $ulc_res_pus_y i32)
+
+    (param $urc_pul_tow_x i32)
+    (param $urc_res_pul_x i32)
+    (param $urc_pus_awa_x i32)
+    (param $urc_res_pus_x i32)
+    (param $urc_pul_tow_y i32)
+    (param $urc_res_pul_y i32)
+    (param $urc_pus_awa_y i32)
+    (param $urc_res_pus_y i32)
+
+    (param $dlc_pul_tow_x i32)
+    (param $dlc_res_pul_x i32)
+    (param $dlc_pus_awa_x i32)
+    (param $dlc_res_pus_x i32)
+    (param $dlc_pul_tow_y i32)
+    (param $dlc_res_pul_y i32)
+    (param $dlc_pus_awa_y i32)
+    (param $dlc_res_pus_y i32)
+
+    (param $drc_pul_tow_x i32)
+    (param $drc_res_pul_x i32)
+    (param $drc_pus_awa_x i32)
+    (param $drc_res_pus_x i32)
+    (param $drc_pul_tow_y i32)
+    (param $drc_res_pul_y i32)
+    (param $drc_pus_awa_y i32)
+    (param $drc_res_pus_y i32)
+
+    (param $upp_lef_val i32)
+    (param $upp_rig_val i32)
+    (param $dow_lef_val i32)
+    (param $dow_rig_val i32)
+
+    ;; outputs
+
+    (result i32 i32 i32 i32)
+
+    ;; variables
+
+    (local $ulc_inc_v i32)
+    (local $ulc_inc_h i32)
+    (local $urc_inc_v i32)
+    (local $urc_inc_h i32)
+    (local $dlc_inc_v i32)
+    (local $dlc_inc_h i32)
+    (local $drc_inc_v i32)
+    (local $drc_inc_h i32)
+    (local $ulc_out_v i32)
+    (local $ulc_out_h i32)
+    (local $urc_out_v i32)
+    (local $urc_out_h i32)
+    (local $dlc_out_v i32)
+    (local $dlc_out_h i32)
+    (local $drc_out_v i32)
+    (local $drc_out_h i32)
+
+    (local $upp_lef_val_ret i32)
+    (local $upp_rig_val_ret i32)
+    (local $dow_lef_val_ret i32)
+    (local $dow_rig_val_ret i32)
+
+    ;; function
+
+    ;; lef
+
+    local.get $ulc_pul_tow_y
+    local.get $ulc_res_pul_y
+    local.get $ulc_pus_awa_y
+    local.get $ulc_res_pus_y
+    local.get $dlc_pul_tow_y
+    local.get $dlc_res_pul_y
+    local.get $dlc_pus_awa_y
+    local.get $dlc_res_pus_y
+    call $tense_solve_for_dim
+    local.set $dlc_out_v
+    local.set $ulc_out_v
+
+    ;; rig
+
+    local.get $urc_pul_tow_y
+    local.get $urc_res_pul_y
+    local.get $urc_pus_awa_y
+    local.get $urc_res_pus_y
+    local.get $drc_pul_tow_y
+    local.get $drc_res_pul_y
+    local.get $drc_pus_awa_y
+    local.get $drc_res_pus_y
+    call $tense_solve_for_dim
+    local.set $drc_out_v
+    local.set $urc_out_v
+
+    ;; upp
+
+    local.get $ulc_pul_tow_x
+    local.get $ulc_res_pul_x
+    local.get $ulc_pus_awa_x
+    local.get $ulc_res_pus_x
+    local.get $urc_pul_tow_x
+    local.get $urc_res_pul_x
+    local.get $urc_pus_awa_x
+    local.get $urc_res_pus_x
+    call $tense_solve_for_dim
+    local.set $urc_out_h
+    local.set $ulc_out_h
+
+    ;; dow
+
+    local.get $dlc_pul_tow_x
+    local.get $dlc_res_pul_x
+    local.get $dlc_pus_awa_x
+    local.get $dlc_res_pus_x
+    local.get $drc_pul_tow_x
+    local.get $drc_res_pul_x
+    local.get $drc_pus_awa_x
+    local.get $drc_res_pus_x
+    call $tense_solve_for_dim
+    local.set $drc_out_h
+    local.set $dlc_out_h
+
+    (local.set $ulc_inc_v (local.get $dlc_out_v))
+    (local.set $ulc_inc_h (local.get $urc_out_h))
+    (local.set $urc_inc_v (local.get $drc_out_v))
+    (local.set $urc_inc_h (local.get $ulc_out_h))
+    (local.set $dlc_inc_v (local.get $ulc_out_v))
+    (local.set $dlc_inc_h (local.get $drc_out_h))
+    (local.set $drc_inc_v (local.get $urc_out_v))
+    (local.set $drc_inc_h (local.get $dlc_out_h))
+
+    local.get $cha_max
+    local.get $upp_lef_val
+    local.get $ulc_inc_h
+    local.get $ulc_inc_v
+    call $force_solve_pro_inc
+    local.set $ulc_inc_v
+    local.set $ulc_inc_h
+
+    local.get $cha_max
+    local.get $upp_rig_val
+    local.get $urc_inc_h
+    local.get $urc_inc_v
+    call $force_solve_pro_inc
+    local.set $urc_inc_v
+    local.set $urc_inc_h
+
+    local.get $cha_max
+    local.get $dow_lef_val
+    local.get $dlc_inc_h
+    local.get $dlc_inc_v
+    call $force_solve_pro_inc
+    local.set $dlc_inc_v
+    local.set $dlc_inc_h
+
+    local.get $cha_max
+    local.get $dow_rig_val
+    local.get $drc_inc_h
+    local.get $drc_inc_v
+    call $force_solve_pro_inc
+    local.set $drc_inc_v
+    local.set $drc_inc_h
+
+    (local.set $ulc_out_v (local.get $dlc_inc_v))
+    (local.set $ulc_out_h (local.get $urc_inc_h))
+    (local.set $urc_out_v (local.get $drc_inc_v))
+    (local.set $urc_out_h (local.get $ulc_inc_h))
+    (local.set $dlc_out_v (local.get $ulc_inc_v))
+    (local.set $dlc_out_h (local.get $drc_inc_h))
+    (local.set $drc_out_v (local.get $urc_inc_v))
+    (local.set $drc_out_h (local.get $dlc_inc_h))
+
+    local.get $upp_lef_val
+    local.get $ulc_out_h
+    local.get $ulc_out_v
+    call $force_solve_pro_out
+    local.set $ulc_out_v
+    local.set $ulc_out_h
+
+    local.get $upp_rig_val
+    local.get $urc_out_h
+    local.get $urc_out_v
+    call $force_solve_pro_out
+    local.set $urc_out_v
+    local.set $urc_out_h
+
+    local.get $dow_lef_val
+    local.get $dlc_out_h
+    local.get $dlc_out_v
+    call $force_solve_pro_out
+    local.set $dlc_out_v
+    local.set $dlc_out_h
+
+    local.get $dow_rig_val
+    local.get $drc_out_h
+    local.get $drc_out_v
+    call $force_solve_pro_out
+    local.set $drc_out_v
+    local.set $drc_out_h
+
+    (local.set $ulc_inc_v (local.get $dlc_out_v))
+    (local.set $ulc_inc_h (local.get $urc_out_h))
+    (local.set $urc_inc_v (local.get $drc_out_v))
+    (local.set $urc_inc_h (local.get $ulc_out_h))
+    (local.set $dlc_inc_v (local.get $ulc_out_v))
+    (local.set $dlc_inc_h (local.get $drc_out_h))
+    (local.set $drc_inc_v (local.get $urc_out_v))
+    (local.set $drc_inc_h (local.get $dlc_out_h))
+
+    local.get $upp_lef_val
+    local.get $ulc_out_h
+    local.get $ulc_out_v
+    local.get $ulc_inc_h
+    local.get $ulc_inc_v
+    call $force_solve_sum_tot
+    local.set $upp_lef_val_ret
+
+    local.get $upp_rig_val
+    local.get $urc_out_h
+    local.get $urc_out_v
+    local.get $urc_inc_h
+    local.get $urc_inc_v
+    call $force_solve_sum_tot
+    local.set $upp_rig_val_ret
+
+    local.get $dow_lef_val
+    local.get $dlc_out_h
+    local.get $dlc_out_v
+    local.get $dlc_inc_h
+    local.get $dlc_inc_v
+    call $force_solve_sum_tot
+    local.set $dow_lef_val_ret
+
+    local.get $dow_rig_val
+    local.get $drc_out_h
+    local.get $drc_out_v
+    local.get $drc_inc_h
+    local.get $drc_inc_v
+    call $force_solve_sum_tot
+    local.set $dow_rig_val_ret
+
+    local.get $upp_lef_val_ret
+    local.get $upp_rig_val_ret
+    local.get $dow_lef_val_ret
+    local.get $dow_rig_val_ret
+  )
+
   (func $tet_box
 
     ;; inputs
