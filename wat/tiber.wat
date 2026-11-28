@@ -331,6 +331,204 @@
     (local.set $dow_rig_blu (call $mask_val_blu (local.get $dow_rig_val)))
     (local.set $dow_rig_alp (call $mask_val_alp (local.get $dow_rig_val)))
 
+    ;; function : force : solve
+
+    ;; alp
+
+    i32.const 255
+
+    local.get $upp_lef_alp_pul_tow_x
+    local.get $upp_lef_alp_res_pul_x
+    local.get $upp_lef_alp_pus_awa_x
+    local.get $upp_lef_alp_res_pus_x
+    local.get $upp_lef_alp_pul_tow_y
+    local.get $upp_lef_alp_res_pul_y
+    local.get $upp_lef_alp_pus_awa_y
+    local.get $upp_lef_alp_res_pus_y
+    local.get $upp_rig_alp_pul_tow_x
+    local.get $upp_rig_alp_res_pul_x
+    local.get $upp_rig_alp_pus_awa_x
+    local.get $upp_rig_alp_res_pus_x
+    local.get $upp_rig_alp_pul_tow_y
+    local.get $upp_rig_alp_res_pul_y
+    local.get $upp_rig_alp_pus_awa_y
+    local.get $upp_rig_alp_res_pus_y
+    local.get $dow_lef_alp_pul_tow_x
+    local.get $dow_lef_alp_res_pul_x
+    local.get $dow_lef_alp_pus_awa_x
+    local.get $dow_lef_alp_res_pus_x
+    local.get $dow_lef_alp_pul_tow_y
+    local.get $dow_lef_alp_res_pul_y
+    local.get $dow_lef_alp_pus_awa_y
+    local.get $dow_lef_alp_res_pus_y
+    local.get $dow_rig_alp_pul_tow_x
+    local.get $dow_rig_alp_res_pul_x
+    local.get $dow_rig_alp_pus_awa_x
+    local.get $dow_rig_alp_res_pus_x
+    local.get $dow_rig_alp_pul_tow_y
+    local.get $dow_rig_alp_res_pul_y
+    local.get $dow_rig_alp_pus_awa_y
+    local.get $dow_rig_alp_res_pus_y
+
+    local.get $upp_lef_alp
+    local.get $upp_rig_alp
+    local.get $dow_lef_alp
+    local.get $dow_rig_alp
+
+    call $tense_solve
+
+    local.set $dow_rig_alp
+    local.set $dow_lef_alp
+    local.set $upp_rig_alp
+    local.set $upp_lef_alp
+
+    ;; blu
+
+    i32.const 255
+
+    local.get $upp_lef_blu_pul_tow_x
+    local.get $upp_lef_blu_res_pul_x
+    local.get $upp_lef_blu_pus_awa_x
+    local.get $upp_lef_blu_res_pus_x
+    local.get $upp_lef_blu_pul_tow_y
+    local.get $upp_lef_blu_res_pul_y
+    local.get $upp_lef_blu_pus_awa_y
+    local.get $upp_lef_blu_res_pus_y
+    local.get $upp_rig_blu_pul_tow_x
+    local.get $upp_rig_blu_res_pul_x
+    local.get $upp_rig_blu_pus_awa_x
+    local.get $upp_rig_blu_res_pus_x
+    local.get $upp_rig_blu_pul_tow_y
+    local.get $upp_rig_blu_res_pul_y
+    local.get $upp_rig_blu_pus_awa_y
+    local.get $upp_rig_blu_res_pus_y
+    local.get $dow_lef_blu_pul_tow_x
+    local.get $dow_lef_blu_res_pul_x
+    local.get $dow_lef_blu_pus_awa_x
+    local.get $dow_lef_blu_res_pus_x
+    local.get $dow_lef_blu_pul_tow_y
+    local.get $dow_lef_blu_res_pul_y
+    local.get $dow_lef_blu_pus_awa_y
+    local.get $dow_lef_blu_res_pus_y
+    local.get $dow_rig_blu_pul_tow_x
+    local.get $dow_rig_blu_res_pul_x
+    local.get $dow_rig_blu_pus_awa_x
+    local.get $dow_rig_blu_res_pus_x
+    local.get $dow_rig_blu_pul_tow_y
+    local.get $dow_rig_blu_res_pul_y
+    local.get $dow_rig_blu_pus_awa_y
+    local.get $dow_rig_blu_res_pus_y
+
+    local.get $upp_lef_blu
+    local.get $upp_rig_blu
+    local.get $dow_lef_blu
+    local.get $dow_rig_blu
+
+    call $tense_solve
+
+    local.set $dow_rig_blu
+    local.set $dow_lef_blu
+    local.set $upp_rig_blu
+    local.set $upp_lef_blu
+
+    ;; gre
+
+    i32.const 255
+
+    local.get $upp_lef_gre_pul_tow_x
+    local.get $upp_lef_gre_res_pul_x
+    local.get $upp_lef_gre_pus_awa_x
+    local.get $upp_lef_gre_res_pus_x
+    local.get $upp_lef_gre_pul_tow_y
+    local.get $upp_lef_gre_res_pul_y
+    local.get $upp_lef_gre_pus_awa_y
+    local.get $upp_lef_gre_res_pus_y
+    local.get $upp_rig_gre_pul_tow_x
+    local.get $upp_rig_gre_res_pul_x
+    local.get $upp_rig_gre_pus_awa_x
+    local.get $upp_rig_gre_res_pus_x
+    local.get $upp_rig_gre_pul_tow_y
+    local.get $upp_rig_gre_res_pul_y
+    local.get $upp_rig_gre_pus_awa_y
+    local.get $upp_rig_gre_res_pus_y
+    local.get $dow_lef_gre_pul_tow_x
+    local.get $dow_lef_gre_res_pul_x
+    local.get $dow_lef_gre_pus_awa_x
+    local.get $dow_lef_gre_res_pus_x
+    local.get $dow_lef_gre_pul_tow_y
+    local.get $dow_lef_gre_res_pul_y
+    local.get $dow_lef_gre_pus_awa_y
+    local.get $dow_lef_gre_res_pus_y
+    local.get $dow_rig_gre_pul_tow_x
+    local.get $dow_rig_gre_res_pul_x
+    local.get $dow_rig_gre_pus_awa_x
+    local.get $dow_rig_gre_res_pus_x
+    local.get $dow_rig_gre_pul_tow_y
+    local.get $dow_rig_gre_res_pul_y
+    local.get $dow_rig_gre_pus_awa_y
+    local.get $dow_rig_gre_res_pus_y
+
+    local.get $upp_lef_gre
+    local.get $upp_rig_gre
+    local.get $dow_lef_gre
+    local.get $dow_rig_gre
+
+    call $tense_solve
+
+    local.set $dow_rig_gre
+    local.set $dow_lef_gre
+    local.set $upp_rig_gre
+    local.set $upp_lef_gre
+
+    ;; red
+
+    i32.const 255
+
+    local.get $upp_lef_red_pul_tow_x
+    local.get $upp_lef_red_res_pul_x
+    local.get $upp_lef_red_pus_awa_x
+    local.get $upp_lef_red_res_pus_x
+    local.get $upp_lef_red_pul_tow_y
+    local.get $upp_lef_red_res_pul_y
+    local.get $upp_lef_red_pus_awa_y
+    local.get $upp_lef_red_res_pus_y
+    local.get $upp_rig_red_pul_tow_x
+    local.get $upp_rig_red_res_pul_x
+    local.get $upp_rig_red_pus_awa_x
+    local.get $upp_rig_red_res_pus_x
+    local.get $upp_rig_red_pul_tow_y
+    local.get $upp_rig_red_res_pul_y
+    local.get $upp_rig_red_pus_awa_y
+    local.get $upp_rig_red_res_pus_y
+    local.get $dow_lef_red_pul_tow_x
+    local.get $dow_lef_red_res_pul_x
+    local.get $dow_lef_red_pus_awa_x
+    local.get $dow_lef_red_res_pus_x
+    local.get $dow_lef_red_pul_tow_y
+    local.get $dow_lef_red_res_pul_y
+    local.get $dow_lef_red_pus_awa_y
+    local.get $dow_lef_red_res_pus_y
+    local.get $dow_rig_red_pul_tow_x
+    local.get $dow_rig_red_res_pul_x
+    local.get $dow_rig_red_pus_awa_x
+    local.get $dow_rig_red_res_pus_x
+    local.get $dow_rig_red_pul_tow_y
+    local.get $dow_rig_red_res_pul_y
+    local.get $dow_rig_red_pus_awa_y
+    local.get $dow_rig_red_res_pus_y
+
+    local.get $upp_lef_red
+    local.get $upp_rig_red
+    local.get $dow_lef_red
+    local.get $dow_rig_red
+
+    call $tense_solve
+
+    local.set $dow_rig_red
+    local.set $dow_lef_red
+    local.set $upp_rig_red
+    local.set $upp_lef_red
+
     ;; function : color : combine
 
     (local.set $upp_lef_out
