@@ -95,6 +95,112 @@
     (local.get $c)
   )
 
+  (func $tense_solve_for_dim
+
+    ;; inputs
+
+    (param $a_pul_tow i32)
+    (param $a_res_pul i32)
+
+    (param $a_pus_awa i32)
+    (param $a_res_pus i32)
+
+    (param $b_pul_tow i32)
+    (param $b_res_pul i32)
+
+    (param $b_pus_awa i32)
+    (param $b_res_pus i32)
+
+    ;; outputs
+
+    (result i32 i32)
+
+    ;; variables
+
+    (local $a_for_pul i32)
+    (local $a_for_pus i32)
+
+    (local $b_for_pul i32)
+    (local $b_for_pus i32)
+
+    (local $tow_a i32)
+    (local $tow_b i32)
+    (local $tow_m i32)
+
+    ;; function
+
+    (local.set $a_for_pul
+      (i32.sub
+        (call $i32_max_val_int
+          (local.get $a_pul_tow)
+          (local.get $b_res_pul)
+        )
+        (local.get $b_res_pul)
+      )
+    )
+
+    (local.set $a_for_pus
+      (i32.sub
+        (call $i32_max_val_int
+          (local.get $a_pus_awa)
+          (local.get $b_res_pus)
+        )
+        (local.get $b_res_pus)
+      )
+    )
+
+    (local.set $b_for_pul
+      (i32.sub
+        (call $i32_max_val_int
+          (local.get $b_pul_tow)
+          (local.get $a_res_pul)
+        )
+        (local.get $a_res_pul)
+      )
+    )
+
+    (local.set $b_for_pus
+      (i32.sub
+        (call $i32_max_val_int
+          (local.get $b_pus_awa)
+          (local.get $a_res_pus)
+        )
+        (local.get $a_res_pus)
+      )
+    )
+
+    (local.set $tow_b
+      (i32.add
+        (local.get $a_for_pus)
+        (local.get $b_for_pul)
+      )
+    )
+
+    (local.set $tow_a
+      (i32.add
+        (local.get $b_for_pus)
+        (local.get $a_for_pul)
+      )
+    )
+
+    (local.set $tow_m
+      (call $i32_max_val_int
+        (local.get $tow_a)
+        (local.get $tow_b)
+      )
+    )
+
+    (i32.sub
+      (local.get $tow_m)
+      (local.get $tow_a)
+    )
+
+    (i32.sub
+      (local.get $tow_m)
+      (local.get $tow_b)
+    )
+  )
+
   (func $tense_solve
 
     ;; inputs
