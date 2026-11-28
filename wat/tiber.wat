@@ -95,6 +95,67 @@
     (local.get $c)
   )
 
+  (func $force_solve_pro_inc
+
+    ;; inputs
+
+    (param $mid_max i32)
+    (param $mid_inc i32)
+    (param $mid_inc_h i32)
+    (param $mid_inc_v i32)
+
+    ;; outputs
+
+    (result i32 i32)
+
+    ;; variables
+
+    (local $mid_inc_spo i32)
+    (local $mid_inc_sum i32)
+
+    ;; function
+
+    (i32.ge_u
+      (local.tee $mid_inc_spo (i32.sub (local.get $mid_max) (local.get $mid_inc)))
+      (local.tee $mid_inc_sum (i32.add (local.get $mid_inc_h) (local.get $mid_inc_v)))
+    )
+    (if (result i32 i32)
+      (then
+
+        (local.get $mid_inc_h)
+        (local.get $mid_inc_v)
+      )
+      (else
+
+        (local.get $mid_inc_sum)
+        (if (result i32 i32)
+          (then
+
+            (i32.div_u
+              (i32.mul
+                (local.get $mid_inc_spo)
+                (local.get $mid_inc_h)
+              )
+              (local.get $mid_inc_sum)
+            )
+            (i32.div_u
+              (i32.mul
+                (local.get $mid_inc_spo)
+                (local.get $mid_inc_v)
+              )
+              (local.get $mid_inc_sum)
+            )
+          )
+          (else
+
+            (i32.const 0)
+            (i32.const 0)
+          )
+        )
+      )
+    )
+  )
+
   (func $tense_solve_for_dim
 
     ;; inputs
