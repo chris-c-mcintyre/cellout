@@ -1059,6 +1059,109 @@
       )
     )
 
+    ;; tiber_spore
+
+    (global.get $globo_force_flags_tiber_spore)
+    (if
+      (then
+
+        (local.set $mid_ran
+          (i32.rem_u
+            (call $rando_trixo)
+            (i32.const 4)
+          )
+        )
+
+        local.get $mid_ran
+        i32.const 0
+        i32.eq
+        (if
+          (then
+
+            ;; upp_lef
+
+            local.get $upp_lef_gre
+
+            call $tiber_spore
+
+            local.get $upp_lef_gre_pus_awa_x
+            i32.add
+            local.set $upp_lef_gre_pus_awa_x
+
+            local.get $upp_lef_gre_pus_awa_y
+            i32.add
+            local.set $upp_lef_gre_pus_awa_y
+          )
+        )
+
+        local.get $mid_ran
+        i32.const 1
+        i32.eq
+        (if
+          (then
+
+            ;; upp_rig
+
+            local.get $upp_rig_gre
+
+            call $tiber_spore
+
+            local.get $upp_rig_gre_pus_awa_x
+            i32.add
+            local.set $upp_rig_gre_pus_awa_x
+
+            local.get $upp_rig_gre_pus_awa_y
+            i32.add
+            local.set $upp_rig_gre_pus_awa_y
+          )
+        )
+
+        local.get $mid_ran
+        i32.const 2
+        i32.eq
+        (if
+          (then
+
+            ;; dow_lef
+
+            local.get $dow_lef_gre
+
+            call $tiber_spore
+
+            local.get $dow_lef_gre_pus_awa_x
+            i32.add
+            local.set $dow_lef_gre_pus_awa_x
+
+            local.get $dow_lef_gre_pus_awa_y
+            i32.add
+            local.set $dow_lef_gre_pus_awa_y
+          )
+        )
+
+        local.get $mid_ran
+        i32.const 3
+        i32.eq
+        (if
+          (then
+
+            ;; dow_rig
+
+            local.get $dow_rig_gre
+
+            call $tiber_spore
+
+            local.get $dow_rig_gre_pus_awa_x
+            i32.add
+            local.set $dow_rig_gre_pus_awa_x
+
+            local.get $dow_rig_gre_pus_awa_y
+            i32.add
+            local.set $dow_rig_gre_pus_awa_y
+          )
+        )
+      )
+    )
+
     ;; function : force : solve
 
     ;; alp
